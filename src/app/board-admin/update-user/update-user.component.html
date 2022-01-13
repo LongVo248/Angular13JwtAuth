@@ -4,7 +4,7 @@
       <img class="img-fluid" src="/assets/signup_64.png" width="100px" />
     </div>
 
-    <div class="header">Register an account</div>
+    <div class="header">Update an account: {{user.username}}</div>
 
     <form
       *ngIf="!isSuccessful"
@@ -13,13 +13,13 @@
       #f="ngForm"
       novalidate
     >
-      <div class="userInput">
+      <!-- <div class="userInput">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label for="username">Username</mat-label>
           <input
             type="text"
             name="username"
-            [(ngModel)]="form.username"
+            [(ngModel)]="user.username"
             required
             minlength="3"
             maxlength="20"
@@ -40,7 +40,7 @@
             </div>
           </mat-error>
         </mat-form-field>
-      </div>
+      </div> -->
 
       <div class="firstnameInput">
         <mat-form-field class="full-width" appearance="outline">
@@ -48,7 +48,7 @@
           <input
             type="text"
             name="firstname"
-            [(ngModel)]="form.firstname"
+            [(ngModel)]="user.firstname"
             required
             minlength="3"
             maxlength="20"
@@ -71,7 +71,7 @@
           <input
             type="text"
             name="lastname"
-            [(ngModel)]="form.lastname"
+            [(ngModel)]="user.lastname"
             required
             minlength="3"
             maxlength="20"
@@ -94,7 +94,7 @@
           <input
             type="email"
             name="email"
-            [(ngModel)]="form.email"
+            [(ngModel)]="user.email"
             required
             email
             matInput
@@ -110,13 +110,13 @@
         </mat-form-field>
       </div>
 
-      <div class="passwordInput">
+      <!-- <div class="passwordInput">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label for="password">Password</mat-label>
           <input
             type="password"
             name="password"
-            [(ngModel)]="form.password"
+            [(ngModel)]="user"
             required
             minlength="6"
             #password="ngModel"
@@ -133,10 +133,10 @@
             </div>
           </mat-error>
         </mat-form-field>
-      </div>
+      </div> -->
 
       <div class="btnSignup">
-        <button class="btn btn-primary btn-block">Sign Up</button>
+        <button class="btn btn-primary btn-block">Update</button>
       </div>
       <div class="button-row container text-center">
         <mat-error
@@ -149,7 +149,7 @@
     </form>
 
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Your registration is successful!
+      Account {{user.username}} updated is successful!
     </div>
   </mat-card-content>
 </mat-card>

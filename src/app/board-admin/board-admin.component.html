@@ -1,5 +1,68 @@
-<div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
+<div class="mat-elevation-z8">
+  <table mat-table class="top" [dataSource]="userList">
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef>Username</th>
+      <td mat-cell *matCellDef="let element">{{ element.username }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="fullname">
+      <th mat-header-cell *matHeaderCellDef>Fullname</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.firstname }} {{ element.lastname }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roles">
+      <th mat-header-cell *matHeaderCellDef>Roles</th>
+      <td mat-cell *matCellDef="let element">
+        <tr *ngFor="let u of element.roles">
+          <td>{{u.name}}</td>
+        </tr>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="active" class="example-label">
+      <th mat-header-cell *matHeaderCellDef>Active</th>
+      <td mat-cell *matCellDef="let element">
+        <button class="btnActive" mat-raised-button color="warn" (click)="updateUser(element.id)">Update</button>
+        <button class="btnActive" mat-raised-button color="accent" (click)="detailsUser(element.id)">
+          Details
+        </button>
+        <button
+          class="btnActive"
+          mat-raised-button
+          color="primary"
+          (click)="deleteUser(element.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>
+
+<!-- <table matSort (matSortChange)="sortData($event)">
+  <tr>
+    <th mat-sort-header="username">Username</th>
+    <th mat-sort-header="firstname">Firstname</th>
+    <th mat-sort-header="lastname">Lastname</th>
+    <th mat-sort-header="email">Email</th>
+    <th mat-sort-header="roles">Roles</th>
+  </tr>
+
+  <tr *ngFor="let user of sortedData">
+    <td>{{ user.username }}</td>
+    <td>{{ user.firstname }}</td>
+    <td>{{ user.lastname }}</td>
+    <td>{{ user.email }}</td>
+    <td>{{ user.roles }}</td>
+  </tr>
+</table> -->

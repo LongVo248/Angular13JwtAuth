@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from '../_services/token-storage.service';
 
 // for Spring Boot back-end
-const TOKEN_HEADER_KEY = ' x-access-token';
+const TOKEN_HEADER_KEY = 'x-access-token';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
