@@ -29,6 +29,12 @@ import {MatSortModule} from '@angular/material/sort';
 import { UpdateUserComponent } from './board-admin/update-user/update-user.component';
 import { DetailsUserComponent } from './board-admin/details-user/details-user.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AddUserComponent } from './board-admin/add-user/add-user.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -42,6 +48,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     BoardUserComponent,
     UpdateUserComponent,
     DetailsUserComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,19 +56,24 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CdkTableModule,
     MatButtonModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatInputModule,
-    NgbModule,
     MatCardModule,
-    MatTabsModule,
     MatIconModule,
-    MatPaginatorModule,
+    MatInputModule,
     MatListModule,
-    MatTableModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatRippleModule,
+    MatSelectModule,
     MatSortModule,
-    NgxPaginationModule
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    NgxPaginationModule,
+    NgbModule,
+    Ng2SearchPipeModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

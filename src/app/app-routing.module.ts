@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddUserComponent } from './board-admin/add-user/add-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { DetailsUserComponent } from './board-admin/details-user/details-user.component';
 import { UpdateUserComponent } from './board-admin/update-user/update-user.component';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'details-user/:id', component: DetailsUserComponent },
   { path: 'update-user/:id', component: UpdateUserComponent },
+  { path: 'add-user', component: AddUserComponent },
 ];
 
 @NgModule({

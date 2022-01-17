@@ -1,10 +1,10 @@
 <mat-card >
   <mat-card-content>
     <div class="container text-center">
-      <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar7.png" width="100px" />
+      <img class="img-fluid" src="/assets/signup_64.png" width="100px" />
     </div>
 
-    <div class="header">Update an account: {{user.username}}</div>
+    <div class="header">Create Account</div>
 
     <form
       *ngIf="!isSuccessful"
@@ -13,6 +13,34 @@
       #f="ngForm"
       novalidate
     >
+      <div class="userInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label for="username">Username</mat-label>
+          <input
+            type="text"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            minlength="3"
+            maxlength="20"
+            #username="ngModel"
+            placeholder="Enter username"
+            matInput
+          />
+          <mat-error
+            class="alert-danger"
+            *ngIf="username.errors && f.submitted"
+          >
+            <div *ngIf="['required']">Username is required</div>
+            <div *ngIf="['minlength']">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="['maxlength']">
+              Username must be at most 20 characters
+            </div>
+          </mat-error>
+        </mat-form-field>
+      </div>
 
       <div class="firstnameInput">
         <mat-form-field class="full-width" appearance="outline">
@@ -20,7 +48,7 @@
           <input
             type="text"
             name="firstname"
-            [(ngModel)]="user.firstname"
+            [(ngModel)]="form.firstname"
             required
             minlength="3"
             maxlength="20"
@@ -43,7 +71,7 @@
           <input
             type="text"
             name="lastname"
-            [(ngModel)]="user.lastname"
+            [(ngModel)]="form.lastname"
             required
             minlength="3"
             maxlength="20"
@@ -66,7 +94,7 @@
           <input
             type="email"
             name="email"
-            [(ngModel)]="user.email"
+            [(ngModel)]="form.email"
             required
             email
             matInput
@@ -82,13 +110,13 @@
         </mat-form-field>
       </div>
 
-      <!-- <div class="passwordInput">
+      <div class="passwordInput">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label for="password">Password</mat-label>
           <input
             type="password"
             name="password"
-            [(ngModel)]="user"
+            [(ngModel)]="form.password"
             required
             minlength="6"
             #password="ngModel"
@@ -105,10 +133,10 @@
             </div>
           </mat-error>
         </mat-form-field>
-      </div> -->
+      </div>
 
       <div class="btnSignup">
-        <button class="btn btn-primary btn-block">Update</button>
+        <button class="btn btn-primary btn-block">Create Account</button>
       </div>
       <div class="button-row container text-center">
         <mat-error
@@ -121,7 +149,7 @@
     </form>
 
     <div class="alert alert-success" *ngIf="isSuccessful">
-      Account {{user.username}} updated is successful!
+      Added user account successfully
     </div>
   </mat-card-content>
 </mat-card>
