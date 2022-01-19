@@ -10,7 +10,7 @@
       <a mat-icon-button style="padding-right: 80px;" *ngIf="showModeratorBoard" routerLink="mod">Moderator Board</a>
       <a mat-icon-button style="margin-left: 60px;" *ngIf="isLoggedIn" routerLink="user">User</a>
       <a mat-icon-button style="margin:0 40px 0 40px;" *ngIf="isLoggedIn" routerLink="profile">{{ username }}</a>
-      <a *ngIf="isLoggedIn" style="margin:0 20px 0 20px" (click)="logout()" mat-icon-button >LogOut</a>
+      <a *ngIf="isLoggedIn" style="margin:0 20px 0 20px" (click)="logout()" mat-icon-button routerLink="home">LogOut</a>
   </mat-toolbar>
   <div class="container">
     <router-outlet></router-outlet>

@@ -9,14 +9,13 @@ import { UserInfo } from '../userInfo';
   styleUrls: ['./details-user.component.css']
 })
 export class DetailsUserComponent implements OnInit {
-
+  currentUser : any;
+  user: UserInfo= new UserInfo;
   id!: number;
-  user!: UserInfo ;
   constructor(private route: ActivatedRoute, private userService:UserService) { }
 
   ngOnInit(): void {
     this.id= this.route.snapshot.params['id'];
-    this.user= new UserInfo();
     this.userService.getUser(this.id).subscribe(data=>{
       this.user=data;
       console.log(data)

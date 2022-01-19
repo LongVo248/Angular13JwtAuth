@@ -150,30 +150,58 @@
           <div class="card-body">
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Full Name</h6>
+                <h6 class="mb-0">UserName</h6>
               </div>
-              <div class="col-sm-9 text-secondary">{{ currentUser.firstname }}  {{ currentUser.lastname }}</div>
+              <div class="col-sm-9 text-secondary">{{ currentUser.username }}</div>
             </div>
             <hr />
+
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Firstname</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ currentUser.firstname }}</div>
+            </div>
+            <hr />
+
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Lastname</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">{{ currentUser.lastname }}</div>
+            </div>
+            <hr />
+
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Email</h6>
               </div>
               <div class="col-sm-9 text-secondary">{{ currentUser.email }}</div>
             </div>
-            <hr />
+            <hr/>
+
+            <div class="row">
+              <div class="col-sm-3">
+                <h6 class="mb-0">Password</h6>
+              </div>
+              <div class="col-sm-9 text-secondary">
+                <span>************</span>
+                <button style="margin-left: 200px;" mat-icon-button color="primary" (click)="changePassword(currentUser.id)">Change Password?</button>
+              </div>
+            </div>
+            <hr/>
+            <!-- <hr />
             <div class="row">
               <div class="col-sm-3">
                 <h6 class="mb-0">Role</h6>
               </div>
               <div class="col-sm-9 text-secondary">
-                {{currentUser.roles}}
-                <!-- <td *ngFor="let user of currentUser.roles">
-                    <tr>{{ user.roles }}</tr>
-                </td> -->
+                <tr *ngFor="let user of currentUser.roles">
+                    <td>{{ user.name }}</td>
+                </tr>
                 </div>
             </div>
-            <hr />
+            <hr /> -->
           </div>
         </div>
 

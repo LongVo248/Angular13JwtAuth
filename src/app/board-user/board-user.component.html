@@ -1,1 +1,84 @@
-<p>board-user works!</p>
+<mat-card>
+  <mat-card-content>
+    <div class="container text-center">
+      <img
+        class="img-fluid"
+        src="https://bootdey.com/img/Content/avatar/avatar7.png"
+        width="100px"
+      />
+    </div>
+
+    <div class="header">Update an account: {{ user.username }}</div>
+
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="firstnameInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label for="firstname">Firstname</mat-label>
+          <input
+            type="text"
+            name="firstname"
+            [(ngModel)]="user.firstname"
+            required
+            minlength="3"
+            maxlength="20"
+            #firstname="ngModel"
+            placeholder="Enter firstname"
+            matInput
+          />
+          <mat-error
+            class="alert-danger"
+            *ngIf="firstname.errors && f.submitted"
+          >
+            <div *ngIf="['required']">Firstname is required</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="lastnameInput">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label for="lastname">Lastname</mat-label>
+          <input
+            type="text"
+            name="lastname"
+            [(ngModel)]="user.lastname"
+            required
+            minlength="3"
+            maxlength="20"
+            #lastname="ngModel"
+            placeholder="Enter lastname"
+            matInput
+          />
+          <mat-error
+            class="alert-danger"
+            *ngIf="lastname.errors && f.submitted"
+          >
+            <div *ngIf="['required']">Lastname is required</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div class="btnSignup">
+        <button class="btn btn-primary btn-block">Update</button>
+      </div>
+      <div class="button-row container text-center">
+        <mat-error
+          class="alert alert-warning"
+          *ngIf="f.submitted && isSignUpFailed"
+        >
+          Signup failed!<br />{{ errorMessage }}
+        </mat-error>
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      Account {{ user.username }} updated is successful!
+    </div>
+  </mat-card-content>
+</mat-card>

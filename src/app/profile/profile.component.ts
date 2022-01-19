@@ -18,9 +18,17 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
+    this.userSerive.getUser(this.token.getUser().id).subscribe(data=>{
+      this.currentUser=data;
+    })
+    console.log(this.currentUser)
   }
 
   updateUser(id: number){
     this.router.navigate(['update-user', id])
+  }
+
+  changePassword(id: number){
+    this.router.navigate(['change-password', id])
   }
 }

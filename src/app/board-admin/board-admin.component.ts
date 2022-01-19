@@ -39,14 +39,6 @@ export class BoardAdminComponent implements OnInit {
       this.dataSource.sort = value;
     }
   }
-
-  //pager
-  // private allItems: any[] = [];
-  // pager: any = {};
-  // pagedItems: any[] = [];
-
-  //search
-
   constructor(
     private http: HttpClient,
     private userService: UserService,
@@ -54,12 +46,8 @@ export class BoardAdminComponent implements OnInit {
     private pagerService: PagerService
   ) {
     this.userService.getAdminBoard().subscribe((data) => {
-      this.userList = data;
-      //this.setPage(1);
       this.dataSource = new MatTableDataSource(data);
     });
-
-    console.log(this.userList);
   }
 
   applyFilter(event: Event) {
@@ -74,9 +62,6 @@ export class BoardAdminComponent implements OnInit {
   ngOnInit() {
     this.userService.getAdminBoard().subscribe((data) => {
       this.dataSource = new MatTableDataSource<UserInfo>(data);
-      // this.allItems = data;
-      // console.log(data);
-      // this.setPage(1);
       this.userList = data;
     });
   }
@@ -84,13 +69,11 @@ export class BoardAdminComponent implements OnInit {
   getUserList() {
     this.userService.getAdminBoard().subscribe((data) => {
       this.userList = data;
-      //this.setPage(1);
     });
   }
 
   deleteUser(id: number) {
     this.userService.deleteUser(id).subscribe((data) => {
-      console.log(data);
       this.getUserList();
     });
   }
@@ -106,18 +89,4 @@ export class BoardAdminComponent implements OnInit {
   addUser() {
     this.router.navigate(['add-user']);
   }
-
-  //page
-  // setPage(page: number) {
-  //   this.pager = this.pagerService.getPager(this.allItems.length, page);
-
-  //   // get current page of items
-  //   this.pagedItems = this.allItems.slice(
-  //     this.pager.startIndex,
-  //     this.pager.endIndex + 1
-  //   );
-  //   console.log(this.pagedItems);
-  // }
-
-  //search
 }

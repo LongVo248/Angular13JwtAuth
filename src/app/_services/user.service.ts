@@ -28,8 +28,15 @@ export class UserService {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
+  getUserBoard(id : number): Observable<any> {
+    console.log(this.tokenService.getToken());
+    return this.http.get<any>(API_URL + 'user/'+id, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.tokenService.getToken(),
+      })
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Credential', 'true'),
+    });
   }
 
   getModeratorBoard(): Observable<any> {
@@ -57,23 +64,54 @@ export class UserService {
     });
   }
 
-  updateUser(id: number, user: UserInfo ): Observable<any>{
-    return this.http.put(API_URL+'admin/update/'+id, user,{
+  updateUserAdmin(id: number, user: UserInfo): Observable<any> {
+    return this.http.put(API_URL + 'admin/update/' + id, JSON.stringify(user), {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.tokenService.getToken(),
       })
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Credential', 'true'),
-    } );
+    });
   }
 
-  getUser(id: number): Observable<any>{
-    return this.http.get(API_URL+'admin/user/'+id,{
+  updateUser(id: number, user: UserInfo): Observable<any> {
+    //console.log(id,user)
+    return this.http.put(API_URL + 'user/update/' + id, JSON.stringify(user), {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.tokenService.getToken(),
       })
         .set('Content-Type', 'application/json')
         .set('Access-Control-Allow-Credential', 'true'),
-    })
+    });
+  }
+
+  getUser(id: number): Observable<any> {
+    return this.http.get(API_URL + 'user/' + id, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.tokenService.getToken(),
+      })
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Credential', 'true'),
+    });
+  }
+
+  // updatePassword(id: number, password: string, newPassword: string): Observable<any>{
+  //   return this.http.put(API_URL + 'user/change-password/'+id,password, newPassword,{
+  //     headers: new HttpHeaders({
+  //       Authorization: 'Bearer ' + this.tokenService.getToken(),
+  //     })
+  //       .set('Content-Type', 'application/json')
+  //       .set('Access-Control-Allow-Credential', 'true'),
+  //   } );
+  // }
+
+  getUserAdmin(id: number): Observable<any> {
+    return this.http.get(API_URL + 'admin/user/' + id, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.tokenService.getToken(),
+      })
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Credential', 'true'),
+    });
   }
 }

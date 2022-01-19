@@ -6,6 +6,7 @@ import { DetailsUserComponent } from './board-admin/details-user/details-user.co
 import { UpdateUserComponent } from './board-admin/update-user/update-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
+import { ChangePasswordComponent } from './board-user/change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'details-user/:id', component: DetailsUserComponent },
   { path: 'update-user/:id', component: UpdateUserComponent },
   { path: 'add-user', component: AddUserComponent },
+   {path: 'change-password/:id', component: ChangePasswordComponent}
 ];
 
 @NgModule({

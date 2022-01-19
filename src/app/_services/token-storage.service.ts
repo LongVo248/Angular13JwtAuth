@@ -11,8 +11,6 @@ export class TokenStorageService {
   constructor(private router:Router) {}
   signOut(): void {
     window.sessionStorage.clear();
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.removeItem(USER_KEY);
   }
 
   public saveToken(token: string): void {

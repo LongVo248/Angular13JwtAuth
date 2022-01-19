@@ -35,9 +35,12 @@ export class AppComponent implements OnInit {
   }
 
   logout(): void {
-    this.isLogout = true;
-    window.location.reload();
+    //this.isLogout = true;
     this.tokenStorageService.signOut();
-    this.router.navigate(['login']);
+    this.router.navigate(['home']);
+    this.isLoggedIn = false;
+    this.showAdminBoard = false;
+    this.showModeratorBoard = false;
+    this.isLogout = false;
   }
 }

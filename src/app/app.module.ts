@@ -35,6 +35,9 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ChangePasswordComponent } from './board-user/change-password/change-password.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +52,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     UpdateUserComponent,
     DetailsUserComponent,
     AddUserComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +77,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule,
     NgxPaginationModule,
     NgbModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
