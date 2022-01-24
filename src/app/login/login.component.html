@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-content>
+  <mat-card-content class="login-form-2">
     <div class="container text-center">
       <img class="img-fluid" width="100px" src="/assets/password_1.png" />
     </div>
@@ -15,7 +15,7 @@
       #f="ngForm"
       novalidate
     >
-      <div class="userInput">
+      <div class="userInput form-group">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Username</mat-label>
           <input
@@ -37,7 +37,7 @@
         </mat-form-field>
       </div>
 
-      <div class="passwordInput">
+      <div class="passwordInput form-group">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Password</mat-label>
           <input
@@ -60,6 +60,10 @@
             </mat-error>
           </mat-error>
         </mat-form-field>
+      </div>
+
+      <div>
+        <button class="ForgetPwd" style="margin-left: 200px;" mat-icon-button color="primary" (click)="forgotPassword()">Forgot Password?</button>
       </div>
 
       <div class="btnLogin container text-center">

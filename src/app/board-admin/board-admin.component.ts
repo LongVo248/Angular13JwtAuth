@@ -76,6 +76,7 @@ export class BoardAdminComponent implements OnInit {
     this.userService.deleteUser(id).subscribe((data) => {
       this.getUserList();
     });
+    this.reloadPage();
   }
 
   detailsUser(id: number) {
@@ -88,5 +89,8 @@ export class BoardAdminComponent implements OnInit {
 
   addUser() {
     this.router.navigate(['add-user']);
+  }
+  reloadPage(): void {
+    window.location.reload();
   }
 }

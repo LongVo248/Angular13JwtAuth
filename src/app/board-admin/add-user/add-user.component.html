@@ -95,6 +95,7 @@
             type="email"
             name="email"
             [(ngModel)]="form.email"
+            pattern="^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$"
             required
             email
             matInput

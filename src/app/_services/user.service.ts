@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { UserInfo } from '../board-admin/userInfo';
 import { TokenStorageService } from './token-storage.service';
 
-const API_URL = 'http://localhost:8080/api/users/';
+const API_URL = 'http://localhost:8083/api/users/';
 
 // const httpOptions = {
 //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -28,9 +28,9 @@ export class UserService {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }
 
-  getUserBoard(id : number): Observable<any> {
+  getUserBoard(id: number): Observable<any> {
     console.log(this.tokenService.getToken());
-    return this.http.get<any>(API_URL + 'user/'+id, {
+    return this.http.get<any>(API_URL + 'user/' + id, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + this.tokenService.getToken(),
       })
@@ -95,15 +95,31 @@ export class UserService {
     });
   }
 
-  // updatePassword(id: number, password: string, newPassword: string): Observable<any>{
-  //   return this.http.put(API_URL + 'user/change-password/'+id,password, newPassword,{
-  //     headers: new HttpHeaders({
-  //       Authorization: 'Bearer ' + this.tokenService.getToken(),
-  //     })
-  //       .set('Content-Type', 'application/json')
-  //       .set('Access-Control-Allow-Credential', 'true'),
-  //   } );
-  // }
+  updatePassword(
+    id: number,
+    newPassword: string
+  ): Observable<any> {
+    return this.http.put(
+      API_URL + 'user/change-password/' + id , newPassword,
+      {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + this.tokenService.getToken(),
+        })
+          .set('Content-Type', 'application/json')
+          .set('Access-Control-Allow-Credential', 'true'),
+      }
+    );
+  }
+
+  checkPassword(id: number, password: string): Observable<any> {
+    return this.http.post(API_URL + 'user/check-password/' + id, password, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.tokenService.getToken(),
+      })
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Credential', 'true'),
+    });
+  }
 
   getUserAdmin(id: number): Observable<any> {
     return this.http.get(API_URL + 'admin/user/' + id, {
@@ -114,4 +130,19 @@ export class UserService {
         .set('Access-Control-Allow-Credential', 'true'),
     });
   }
+
+  forgetPassword(email: string): Observable<any> {
+    console.log(email);
+    return this.http.post(API_URL + 'user/forgetPassword/' + email, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + this.tokenService.getToken(),
+      })
+        .set('Content-Type', 'application/json')
+        .set('Access-Control-Allow-Credential', 'true'),
+    });
+  }
+
+  // getBcrypt(password: string): Observable<any>{
+  //   return this.http.get
+  // }
 }

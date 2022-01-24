@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from './token-storage.service';
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = 'http://localhost:8083/api/auth/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -31,5 +31,10 @@ export class AuthService {
       email,
       password
     }, httpOptions);
+  }
+
+  confirmEmail(email: string): Observable<any> {
+    console.log(email)
+    return this.http.post(AUTH_API+ 'confirmEmail',{email}, httpOptions);
   }
 }

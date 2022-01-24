@@ -7,6 +7,7 @@
     <div class="header">Register an account</div>
 
     <form
+
       *ngIf="!isSuccessful"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
@@ -95,6 +96,7 @@
             type="email"
             name="email"
             [(ngModel)]="form.email"
+            pattern="^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$"
             required
             email
             matInput

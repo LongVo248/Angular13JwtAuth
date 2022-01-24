@@ -37,7 +37,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ChangePasswordComponent } from './board-user/change-password/change-password.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
+import {EncrDecrService} from '../app/_services/encr-decr.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DetailsUserComponent,
     AddUserComponent,
     ChangePasswordComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     Ng2SearchPipeModule,
     ReactiveFormsModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, EncrDecrService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

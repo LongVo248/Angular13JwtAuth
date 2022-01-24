@@ -9,6 +9,7 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { ChangePasswordComponent } from './board-user/change-password/change-password.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'details-user/:id', component: DetailsUserComponent },
   { path: 'update-user/:id', component: UpdateUserComponent },
   { path: 'add-user', component: AddUserComponent },
-   {path: 'change-password/:id', component: ChangePasswordComponent}
+   {path: 'change-password/:id', component: ChangePasswordComponent},
+   {path: 'reset-password', component: ResetPasswordComponent}
 ];
 
 @NgModule({
